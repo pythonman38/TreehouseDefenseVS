@@ -1,29 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-
-namespace TreehouseDefense
+﻿namespace TreehouseDefense
 {
     class Invader
     {
         private readonly Path _path;
         private int _pathStep = 0;
 
-        public MapLocation Location { get; private set; }
+        public MapLocation Location => _path.GetLocationAt(_pathStep);
+
+        public int Health { get; private set; } = 2;
+
+        // True if the invader has reached the end of the path
+        public bool HasScored { get { return _pathStep >= _path.Length; } }
+
+        public bool IsNetrualized => Health <= 0;
+
+        public bool IsActive => !(IsNetrualized || HasScored);
 
         public Invader(Path path)
         {
             _path = path;
-            Location = _path.GetLocationAt(_pathStep);
         }
 
-        public void Move()
+        public void Move() => _pathStep += 1;
+
+        public void DecreaseHealth(int factor)
         {
-            _pathStep += 1;
-            Location = _path.GetLocationAt(_pathStep);
+            Health -= factor;
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TreehouseDefense
+﻿namespace TreehouseDefense
 {
     class MapLocation : Point
     {
@@ -14,6 +8,11 @@ namespace TreehouseDefense
             {
                 throw new OutOfBoundsException(x + "," + y + " is outside the boundaries of the map.");
             }
+        }
+
+        public bool InRangeOf(MapLocation location, int range)
+        {
+            return DistanceTo(location) <= range;
         }
     }
 }

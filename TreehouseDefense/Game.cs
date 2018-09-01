@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace TreehouseDefense
@@ -27,6 +23,30 @@ namespace TreehouseDefense
                         new MapLocation(7, 2, map),
                     }
                 );
+
+                Invader[] invaders =
+                {
+                    new Invader(path),
+                    new Invader(path),
+                    new Invader(path),
+                    new Invader(path)
+                };
+
+                Tower[] towers =
+                {
+                    new Tower(new MapLocation(1, 3, map)),
+                    new Tower(new MapLocation(3, 3, map)),
+                    new Tower(new MapLocation(5, 3, map))
+                };
+
+                Level level = new Level(invaders)
+                {
+                    Towers = towers
+                };
+
+                bool playerWon = level.Play();
+
+                Debug.WriteLine("Player " + (playerWon ? "won" : "lost"));
             }
             catch(OutOfBoundsException ex)
             {
