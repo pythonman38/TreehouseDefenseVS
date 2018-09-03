@@ -4,12 +4,10 @@
     {
         public TreehouseDefenseException()
         {
-
         }
 
         public TreehouseDefenseException(string message) : base(message)
         {
-
         }
     }
 
@@ -17,12 +15,10 @@
     {
         public OutOfBoundsException()
         {
-
         }
 
         public OutOfBoundsException(string message) : base(message)
         {
-
         }
     }
 }

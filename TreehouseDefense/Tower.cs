@@ -32,8 +32,7 @@ namespace TreehouseDefense
                     if (IsSuccessfulShot())
                     {
                         invader.DecreaseHealth(_power);
-                        Debug.WriteLine("Shot at and hit an invader!");
-
+                        
                         if (invader.IsNetrualized)
                         {
                             Debug.WriteLine("Neutralized an invader!");
