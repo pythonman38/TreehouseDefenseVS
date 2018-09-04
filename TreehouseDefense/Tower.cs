@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace TreehouseDefense
 {
@@ -8,8 +7,6 @@ namespace TreehouseDefense
         protected virtual int Range { get; } = 1;
         protected virtual int Power { get; } = 1;
         protected virtual double Accuracy { get; } = .75;
-
-        private static readonly Random _random = new Random();
 
         private readonly MapLocation _location;
 
@@ -20,12 +17,12 @@ namespace TreehouseDefense
 
         public bool IsSuccessfulShot()
         {
-            return _random.NextDouble() < Accuracy;
+            return Random.NextDouble() < Accuracy;
         }
 
-        public void FireOnInvaders(Invader[] invaders)
+        public void FireOnInvaders(IInvader[] invaders)
         {
-            foreach(Invader invader in invaders)
+            foreach(IInvader invader in invaders)
             {
                 if(invader.IsActive && _location.InRangeOf(invader.Location, Range))
                 {
@@ -33,7 +30,7 @@ namespace TreehouseDefense
                     {
                         invader.DecreaseHealth(Power);
                         
-                        if (invader.IsNetrualized)
+                        if (invader.IsNeutralized)
                         {
                             Debug.WriteLine("Neutralized an invader at " + invader.Location + "!");
                         }
