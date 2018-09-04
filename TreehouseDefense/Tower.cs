@@ -35,7 +35,7 @@ namespace TreehouseDefense
                         
                         if (invader.IsNetrualized)
                         {
-                            Debug.WriteLine("Neutralized an invader!");
+                            Debug.WriteLine("Neutralized an invader at " + invader.Location + "!");
                         }
                     } else
                     {
